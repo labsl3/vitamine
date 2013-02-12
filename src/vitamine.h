@@ -6,6 +6,7 @@
 #include <sstream>
 
 #include "fs/io.h" 
+#include "vm/vm.h"
 
 namespace vitamine
 {
@@ -18,6 +19,7 @@ namespace vitamine
     protected:
       void run();
 
+      vm::vm _virtual_machine;
       std::string _file_name;
   };
 }

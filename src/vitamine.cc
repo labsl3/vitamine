@@ -4,7 +4,8 @@
 namespace vitamine
 {
   vitamine::vitamine(const std::string& file_name)
-    : _file_name(file_name)
+    : _virtual_machine(),
+       _file_name(file_name)
   {
     as::fill_opcodes();
   }
@@ -19,10 +20,8 @@ namespace vitamine
     auto ints = fs::get_instructions_from_file(_file_name); 
     auto flow = as::get_opcodes_from_instructions(ints);
 
-    for (auto f : flow)
-    {
-      std::cout << std::hex << f;
-    }
+    _virtual_machine.execution = flow;
+    _virtual_machine.run();
   }
 }
 
