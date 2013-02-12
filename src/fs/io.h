@@ -17,8 +17,8 @@ namespace vitamine
 {
   namespace fs
   {
-
-    struct lala {};
+    /*
+     */
     std::vector<std::string> get_instructions_from_file(const std::string&);
   }
 }

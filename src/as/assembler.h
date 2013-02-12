@@ -12,10 +12,14 @@ namespace vitamine
 {
   namespace as
   {
-    //std::map<std::string, int> opcodes; 
-
+    /*
+     * Fill the opcodes map
+     */
     void fill_opcodes();
 
+    /*
+     * Parse instructions and return opcodes
+     */
     std::vector<int> get_opcodes_from_instructions(const std::vector<std::string>&);
   }
 }

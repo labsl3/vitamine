@@ -27,9 +27,7 @@ namespace vitamine
       for (auto i : insts)
       {
         if (is_instruction(i))
-        {
           ops.push_back(opcodes[i]);
-        }
         else if (is_number(i))
           ops.push_back(std::atoi(i.c_str()));
       }

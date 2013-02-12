@@ -18,6 +18,11 @@ namespace vitamine
   {
     auto ints = fs::get_instructions_from_file(_file_name); 
     auto flow = as::get_opcodes_from_instructions(ints);
+
+    for (auto f : flow)
+    {
+      std::cout << std::hex << f;
+    }
   }
 }
 
