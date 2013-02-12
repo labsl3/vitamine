@@ -13,4 +13,4 @@ cmake ..
 
 ## Authors :
 
-* Timothée "mitknil" Bernard <bernard.timothee@gmail.com>
+* Timothée "mitknil" Bernard &lt;bernard.timothee@gmail.com&gt;
