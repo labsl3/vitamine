@@ -3,16 +3,19 @@ include_directories(
 	${CMAKE_CURRENT_SOURCE_DIR} 
 	"${CMAKE_CURRENT_SOURCE_DIR}/fs/"
 	"${CMAKE_CURRENT_SOURCE_DIR}/as/"
+	"${CMAKE_CURRENT_SOURCE_DIR}/vm/"
 )
 
 file(GLOB CXX_FILES "*.cc")
 file(GLOB CXX_FS_FILES "fs/*.cc")
 file(GLOB CXX_AS_FILES "as/*.cc")
+file(GLOB CXX_VM_FILES "vm/*.cc")
 
 set(CXX_FILES 
-	${CXX_FILES}
+  ${CXX_FILES}
   ${CXX_FS_FILES}
   ${CXX_AS_FILES}
+  ${CXX_VM_FILES}
 )
 
 
