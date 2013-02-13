@@ -6,71 +6,22 @@ namespace vitamine
   namespace vm
   {
     vm::vm()
+      : flow(),
+        _stack(),
+        _process(flow, _stack)
     {
     
     }
     
     void vm::run()
     {
-      using namespace vitamine::as;
-
-      /*
-       * TODO : Find a scalable solution, template specialization? map of function?
-       */
-      for (size_t i = 0; i < execution.size(); i++)
+      while (flow.hasNext())
       {
-        if (execution[i] == PUSH)
-        {
-          i++;
-          _stack.push(execution[i]);
-        }
-        else if (execution[i] == ADD)
-        {
-          int a = _stack.top();
-          _stack.pop();
-          int b = _stack.top();
-          _stack.pop();
+        // run current instruction
+        _process.run(flow.current());
 
-          _stack.push(a + b);
-        }
-        else if (execution[i] == SUB)
-        {
-          int a = _stack.top();
-          _stack.pop();
-          int b = _stack.top();
-          _stack.pop();
-
-          _stack.push(b - a);
-        }
-        else if (execution[i] == MUL)
-        {
-          int a = _stack.top();
-          _stack.pop();
-          int b = _stack.top();
-          _stack.pop();
-
-          _stack.push(a * b);
-        }
-        else if (execution[i] == DIV)
-        {
-          int a = _stack.top();
-          _stack.pop();
-          int b = _stack.top();
-          _stack.pop();
-
-          _stack.push(b / a);
-        }
-        else if (execution[i] == PRINT)
-        {
-          int a = _stack.top();
-          _stack.pop();
-
-          std::cout << a << std::endl;
-        }
-        else
-        {
-          // TODO
-        }
+        // goes to next instruction
+        flow.next();
       }
     }
   }

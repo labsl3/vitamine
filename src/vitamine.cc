@@ -18,9 +18,9 @@ namespace vitamine
   void vitamine::run()
   {
     auto ints = fs::get_instructions_from_file(_file_name); 
-    auto flow = as::get_opcodes_from_instructions(ints);
+    auto opcodes = as::get_opcodes_from_instructions(ints);
 
-    _virtual_machine.execution = flow;
+    _virtual_machine.flow.opcodes = opcodes;
     _virtual_machine.run();
   }
 }
