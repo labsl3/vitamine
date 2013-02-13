@@ -2,8 +2,10 @@
 #define __VM_VM_H
 
 #include <iostream>
-#include <vector>
-#include <stack>
+
+#include "stack.h"
+#include "flow.h"
+#include "process.h"
 
 namespace vitamine
 {
@@ -18,14 +20,14 @@ namespace vitamine
         void run();
 
         // execution flow
-        std::vector<int> execution;
+        vitamine::vm::flow flow; 
 
       protected:
 
         // memory stack
-        std::stack<int> _stack;
-
-        
+        vitamine::vm::stack _stack;
+        vitamine::vm::process _process;
+ 
     };
   }
 }
