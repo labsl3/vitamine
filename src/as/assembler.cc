@@ -13,11 +13,18 @@ namespace vitamine
       /* 0x1 -> 0x9 : reserved */
 
       opcodes["push"]   = PUSH;
+      opcodes["pop"]   = POP;
       opcodes["add"]    = ADD;
       opcodes["sub"]    = SUB;
       opcodes["mul"]    = MUL;
       opcodes["div"]    = DIV;
       opcodes["print"]  = PRINT;
+      opcodes["and"]    = AND;
+      opcodes["or"]     = OR;
+      opcodes["xor"]    = XOR;
+      opcodes["shl"]    = SHL;
+      opcodes["shr"]    = SHR;
+      opcodes["cmp"]    = CMP;
     }
    
     std::vector<int> get_opcodes_from_instructions(const std::vector<std::string>& insts)

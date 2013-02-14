@@ -12,11 +12,18 @@ namespace vitamine
         _stack(stack)
     {
       table[PUSH]   = &vitamine::vm::process::push; 
+      table[POP]    = &vitamine::vm::process::pop;
       table[ADD]    = &vitamine::vm::process::add; 
       table[SUB]    = &vitamine::vm::process::sub; 
       table[MUL]    = &vitamine::vm::process::mul; 
       table[DIV]    = &vitamine::vm::process::div; 
-      table[PRINT]  = &vitamine::vm::process::print; 
+      table[PRINT]  = &vitamine::vm::process::print;
+      table[AND]    = &vitamine::vm::process::_and;
+      table[OR]     = &vitamine::vm::process::_or;
+      table[XOR]    = &vitamine::vm::process::_xor;
+      table[SHL]    = &vitamine::vm::process::shl;
+      table[SHR]    = &vitamine::vm::process::shr;
+      table[CMP]    = &vitamine::vm::process::cmp; 
     }
 
     void process::run(int opcode)
@@ -29,6 +36,11 @@ namespace vitamine
     void process::push()
     {
       _stack.push(_flow.next());
+    }
+
+    void process::pop()
+    {
+      _stack.pop();
     }
 
     void process::add()
@@ -70,7 +82,52 @@ namespace vitamine
       std::cout << a << std::endl;
     }
 
+    void process::_and()
+    {
+      int a = _stack.pop();
+      int b = _stack.pop();
 
+      _stack.push(b & a);
+    }
 
+    void process::_or()
+    {
+      int a = _stack.pop();
+      int b = _stack.pop();
+
+      _stack.push(b | a);
+    }
+
+    void process::_xor()
+    {
+      int a = _stack.pop();
+      int b = _stack.pop();
+
+      _stack.push(b ^ a);
+    }
+
+    void process::shl()
+    {
+      int a = _stack.pop();
+      int b = _stack.pop();
+
+      _stack.push(b << a);
+    }
+
+    void process::shr()
+    {
+      int a = _stack.pop();
+      int b = _stack.pop();
+
+      _stack.push(b >> a);
+    }
+
+    void process::cmp()
+    {
+      int a = _stack.pop();
+      int b = _stack.pop();
+
+      _stack.push(a == b);
+    }
   }
 }

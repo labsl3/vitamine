@@ -12,7 +12,7 @@ namespace vitamine
     /*
      * OPCODES
      */
-    enum { PUSH = 0xa, ADD, SUB, MUL, DIV, PRINT };
+    enum { PUSH = 0xa, POP, ADD, SUB, MUL, DIV, PRINT, AND, OR, XOR, SHL, SHR, CMP };
     
     /*
      * locale functions
