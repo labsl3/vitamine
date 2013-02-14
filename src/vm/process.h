@@ -28,11 +28,18 @@ namespace vitamine
         std::map<int, void(process::*)()> table; 
         
         void push();
+        void pop();
         void add();
         void sub();
         void mul();
         void div();
         void print();
+        void _and();
+        void _or();
+        void _xor();
+        void shl();
+        void shr();
+        void cmp();
     };
   }
 }
