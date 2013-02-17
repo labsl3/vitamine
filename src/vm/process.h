@@ -40,6 +40,10 @@ namespace vitamine
         void shl();
         void shr();
         void cmp();
+        void jmp();
+        void jmp_if_equal();
+        void jmp_if_not_equal();
+        void duplicate();
     };
   }
 }
