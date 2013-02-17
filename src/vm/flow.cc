@@ -26,6 +26,12 @@ namespace vitamine
       return opcodes[_cursor];
     }
 
+    int flow::go_to(int distance)
+    {
+      _cursor += distance;
+      return current();
+    }
+
   }
 }
 

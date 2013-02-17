@@ -4,6 +4,11 @@ namespace vitamine
 {
   namespace as
   {
+    bool is_label(const std::string& s)
+    {
+      return s[s.size() - 1] == ':';
+    }
+
     bool is_instruction(const std::string& s)
     {
       return !s.empty() && std::find_if(s.begin(), 
