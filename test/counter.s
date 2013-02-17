@@ -4,7 +4,6 @@ loop:
   push 1
   add
 
-  dpl
   print
 
   dpl
