@@ -35,7 +35,7 @@ namespace vitamine
     {
       std::vector<int> ops;
 
-      // string = label, int = symbol number, int = index in code
+      // string = label, int = label number, int = index in code
       std::map<std::string, std::tuple<int, int>> label_map;
 
       int index = 0, label_number = 0;
@@ -63,6 +63,7 @@ namespace vitamine
           // or it's a label
           else
           {
+            // if we don't find the label, we add it
             if (label_map.find(i + ':') == label_map.end())
             { 
               label_map[i + ':'] = std::make_tuple(++label_number, 0);
@@ -70,7 +71,6 @@ namespace vitamine
 
             ops.push_back(label_number);
           }
-          // else error
          
           index++;
         }
@@ -80,9 +80,11 @@ namespace vitamine
 
           index++;
         }
-
       }
 
+      /**
+       * Fetch opcodes and replace label numbers by distance from the jump to the label
+       */
       for (unsigned int i = 0; i < ops.size(); i++)
       {
         if (ops[i] != JMP && ops[i] != JE && ops[i] != JNE)
@@ -91,12 +93,15 @@ namespace vitamine
         i++;
 
         int lb = ops[i];
+
+        // find the label
         auto label = std::find_if(label_map.begin(), label_map.end(),
-            [=](std::pair<std::string, std::tuple<int,int>> p)
+            [=](const std::pair<std::string, std::tuple<int,int>>& p)
             {
               return std::get<0>(p.second) == lb;
             });
 
+        // modify the distance
         if (label != label_map.end())
         {
           ops[i] = std::get<1>(label->second) - i - 1;  
