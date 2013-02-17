@@ -80,6 +80,9 @@ namespace vitamine
 
     void process::print()
     {
+      // IO function, automatically duplicate
+      duplicate();
+
       int a = _stack.pop();
 
       std::cout << a << std::endl;
