@@ -4,6 +4,7 @@
 #include <string>
 #include <algorithm>
 #include <functional>
+#include <map>
 
 namespace vitamine
 {
@@ -12,13 +13,18 @@ namespace vitamine
     /*
      * OPCODES
      */
-    enum { PUSH = 0xa, POP, ADD, SUB, MUL, DIV, PRINT, AND, OR, XOR, SHL, SHR, CMP };
-    
+    enum { PUSH = 0xa, POP, ADD, SUB, MUL, DIV, PRINT, AND, OR, XOR, SHL, SHR, CMP, JMP, JE,
+      JNE, DPL };
+
+    /*
+     */
+        
     /*
      * locale functions
      */
-    bool is_instruction(const std::string& s);
-    bool is_number(const std::string& s);
+    bool is_label(const std::string&);
+    bool is_instruction(const std::string&);
+    bool is_number(const std::string&);
   }
 }
 

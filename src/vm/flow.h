@@ -17,6 +17,7 @@ namespace vitamine
         bool hasNext();
         int next(); 
         int current();
+        int go_to(int);
 
       protected:
         int _cursor;

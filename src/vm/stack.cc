@@ -1,4 +1,5 @@
 #include "stack.h"
+#include <iostream>
 
 namespace vitamine
 {

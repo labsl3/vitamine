@@ -5,6 +5,8 @@
 #include <vector>
 #include <string>
 #include <iostream>
+#include <algorithm>
+#include <tuple>
 
 #include "utils.h"
 

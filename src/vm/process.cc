@@ -24,6 +24,10 @@ namespace vitamine
       table[SHL]    = &vitamine::vm::process::shl;
       table[SHR]    = &vitamine::vm::process::shr;
       table[CMP]    = &vitamine::vm::process::cmp; 
+      table[JMP]    = &vitamine::vm::process::jmp; 
+      table[DPL]    = &vitamine::vm::process::duplicate; 
+      table[JE]     = &vitamine::vm::process::jmp_if_equal;
+      table[JNE]    = &vitamine::vm::process::jmp_if_not_equal;
     }
 
     void process::run(int opcode)
@@ -31,7 +35,6 @@ namespace vitamine
       if (table[opcode])
         (this->*table[opcode])();
     }
-
 
     void process::push()
     {
@@ -128,6 +131,36 @@ namespace vitamine
       int b = _stack.pop();
 
       _stack.push(a == b);
+    }
+
+    void process::jmp()
+    {
+      int distance = _flow.next();
+      _flow.go_to(distance);
+    }
+
+    void process::jmp_if_equal()
+    {
+      int b = _stack.pop();
+
+      if (b)
+        jmp();
+    }
+
+    void process::jmp_if_not_equal()
+    {
+      int b = _stack.pop();
+
+      if (!b)
+        jmp();
+    }
+
+    void process::duplicate()
+    {
+      int a = _stack.pop();
+
+      _stack.push(a);
+      _stack.push(a);
     }
   }
 }
