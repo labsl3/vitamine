@@ -6,6 +6,9 @@
 #include <sstream>
 #include <fstream>
 #include <iterator>
+#include <algorithm>
+#include <regex>
+#include <iostream>
 
 namespace vitamine
 {

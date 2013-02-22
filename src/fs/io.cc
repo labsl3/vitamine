@@ -16,8 +16,27 @@ namespace vitamine
          * read the whole content of the file and put it in a buffer
          */
         std::stringstream buffer(std::stringstream::in | std::stringstream::out);
-        buffer << file.rdbuf();
-        file.close();
+
+        // delete comments
+        std::vector<std::string> lines;
+        std::string line;
+        while (std::getline(file, line))
+        {
+          lines.push_back(line);
+        }
+
+        for (auto& l : lines)
+        {
+          // find the ; 
+          auto it = std::find(l.begin(), l.end(), ';');
+          // if exists
+          if (it != l.end())
+            // erase from ; to end
+            l.erase(it, l.end());
+          
+          // add to buffer
+          buffer << l << "\n";
+        }
 
         /*
          * read the buffer and insert instructions in a vector
