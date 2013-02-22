@@ -1,3 +1,5 @@
+; This program loops until 100000
+
 push 0
 
 loop:
@@ -6,8 +8,9 @@ loop:
 
   print
 
+  ; if 
   dpl
-  push 1000000
+  push 1000000 ; compare to 1000000
   cmp
   jne loop
 
